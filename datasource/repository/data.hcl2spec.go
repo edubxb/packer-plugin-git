@@ -10,7 +10,8 @@ import (
 // FlatConfig is an auto-generated flat version of Config.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
-	Path *string `mapstructure:"path" cty:"path" hcl:"path"`
+	Path       *string `mapstructure:"path" cty:"path" hcl:"path"`
+	TagsFilter *string `mapstructure:"tags_filter" cty:"tags_filter" hcl:"tags_filter"`
 }
 
 // FlatMapstructure returns a new FlatConfig.
@@ -25,7 +26,8 @@ func (*Config) FlatMapstructure() interface{ HCL2Spec() map[string]hcldec.Spec }
 // The decoded values from this spec will then be applied to a FlatConfig.
 func (*FlatConfig) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
-		"path": &hcldec.AttrSpec{Name: "path", Type: cty.String, Required: false},
+		"path":        &hcldec.AttrSpec{Name: "path", Type: cty.String, Required: false},
+		"tags_filter": &hcldec.AttrSpec{Name: "tags_filter", Type: cty.String, Required: false},
 	}
 	return s
 }
